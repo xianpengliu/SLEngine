@@ -2,3 +2,5 @@
 SLEngine/SLEngine.sdf
 Debug/*
 ipch/*
+SLEngine/Debug/*
+*.ipch
