@@ -4,3 +4,9 @@ Debug/*
 ipch/*
 SLEngine/Debug/*
 *.ipch
+*.obj
+*.tlog
+SLEngine/SLEngine/Debug/vc120.pdb
+*.idb
+SLEngine/SLEngine/Debug/SLEngine.pch
+*.log
