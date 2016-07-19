@@ -1,0 +1,4 @@
+*.opensdf
+SLEngine/SLEngine.sdf
+Debug/*
+ipch/*
