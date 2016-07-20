@@ -51,7 +51,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;VK_USE_PLATFORM_WIN32_KHR;USE_SWAPCHAIN_EXTENSIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -85,6 +85,9 @@
     <ClInclude Include="Common\Macros.h" />
     <ClInclude Include="Common\Ref.h" />
     <ClInclude Include="Platform\Window.h" />
+    <ClInclude Include="Render\stb_image.h" />
+    <ClInclude Include="Render\Tools.h" />
+    <ClInclude Include="Render\VulkanCommon.h" />
     <ClInclude Include="Render\VulkanFunctions.h" />
     <ClInclude Include="Render\VulkanManager.h" />
     <ClInclude Include="Render\Vulkan\vk_icd.h" />
@@ -107,6 +110,8 @@
     <ClCompile Include="Common\AutoreleasePool.cpp" />
     <ClCompile Include="Common\Ref.cpp" />
     <ClCompile Include="Platform\Window.cpp" />
+    <ClCompile Include="Render\Tools.cpp" />
+    <ClCompile Include="Render\VulkanCommon.cpp" />
     <ClCompile Include="Render\VulkanFunctions.cpp" />
     <ClCompile Include="Render\VulkanManager.cpp" />
     <ClCompile Include="SLEngine.cpp" />

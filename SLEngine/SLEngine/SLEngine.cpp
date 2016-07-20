@@ -17,7 +17,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//cApp.run();
 
 	Window window;
-	TutorialBase tutorial01;
+	VulkanManager* tutorial01 = VulkanManager::GetInstance();
 
 	// Create window
 	if (!window.Create(_T("SLEngine")))
@@ -26,7 +26,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	// Init vulkan
-	if (VulkanManager::GetInstance()->init())
+	if (VulkanManager::GetInstance()->init(window.GetParameters()))
 	{
 		Log::log("vulkan init successfully...");
 	}
@@ -36,7 +36,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	// Rendering loop
-	if (!window.RenderingLoop(tutorial01))
+	if (!window.RenderingLoop(*tutorial01))
 	{
 		return -1;
 	}

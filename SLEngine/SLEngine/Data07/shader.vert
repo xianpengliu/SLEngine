@@ -8,16 +8,23 @@
 // Intel does not assume any responsibility for any errors which may appear in this software
 // nor any responsibility to update it.
 
-#include "stdafx.h"
-#include "Render/Vulkan/vulkan.h"
+#version 450
 
-NS_SL_BEGIN
+layout(set=0, binding=1) uniform u_UniformBuffer {
+    mat4 u_ProjectionMatrix;
+};
 
-#define VK_EXPORTED_FUNCTION( fun ) PFN_##fun fun;
-#define VK_GLOBAL_LEVEL_FUNCTION( fun ) PFN_##fun fun;
-#define VK_INSTANCE_LEVEL_FUNCTION( fun ) PFN_##fun fun;
-#define VK_DEVICE_LEVEL_FUNCTION( fun ) PFN_##fun fun;
+layout(location = 0) in vec4 i_Position;
+layout(location = 1) in vec2 i_Texcoord;
 
-#include "ListOfFunctions.inl"
+out gl_PerVertex
+{
+    vec4 gl_Position;
+};
 
-NS_SL_END
+layout(location = 0) out vec2 v_Texcoord;
+
+void main() {
+    gl_Position = u_ProjectionMatrix * i_Position;
+    v_Texcoord = i_Texcoord;
+}

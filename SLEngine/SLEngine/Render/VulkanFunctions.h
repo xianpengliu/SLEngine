@@ -8,8 +8,7 @@
 // Intel does not assume any responsibility for any errors which may appear in this software
 // nor any responsibility to update it.
 
-#if !defined(VULKAN_FUNCTIONS_HEADER)
-#define VULKAN_FUNCTIONS_HEADER
+#pragma once
 
 #include "stdafx.h"
 #include "Render/Vulkan/vulkan.h"
@@ -24,5 +23,3 @@ NS_SL_BEGIN
 #include "ListOfFunctions.inl"
 
 NS_SL_END
-
-#endif

@@ -8,16 +8,14 @@
 // Intel does not assume any responsibility for any errors which may appear in this software
 // nor any responsibility to update it.
 
-#include "stdafx.h"
-#include "Render/Vulkan/vulkan.h"
+#version 450
 
-NS_SL_BEGIN
+layout(set=0, binding=0) uniform sampler2D u_Texture;
 
-#define VK_EXPORTED_FUNCTION( fun ) PFN_##fun fun;
-#define VK_GLOBAL_LEVEL_FUNCTION( fun ) PFN_##fun fun;
-#define VK_INSTANCE_LEVEL_FUNCTION( fun ) PFN_##fun fun;
-#define VK_DEVICE_LEVEL_FUNCTION( fun ) PFN_##fun fun;
+layout(location = 0) in vec2 v_Texcoord;
 
-#include "ListOfFunctions.inl"
+layout(location = 0) out vec4 o_Color;
 
-NS_SL_END
+void main() {
+  o_Color = texture( u_Texture, v_Texcoord );
+}
