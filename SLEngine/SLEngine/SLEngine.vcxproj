@@ -87,6 +87,7 @@
     <ClInclude Include="Platform\Window.h" />
     <ClInclude Include="Render\stb_image.h" />
     <ClInclude Include="Render\Tools.h" />
+    <ClInclude Include="Render\VulkanAgent.h" />
     <ClInclude Include="Render\VulkanCommon.h" />
     <ClInclude Include="Render\VulkanFunctions.h" />
     <ClInclude Include="Render\VulkanManager.h" />
@@ -111,6 +112,7 @@
     <ClCompile Include="Common\Ref.cpp" />
     <ClCompile Include="Platform\Window.cpp" />
     <ClCompile Include="Render\Tools.cpp" />
+    <ClCompile Include="Render\VulkanAgent.cpp" />
     <ClCompile Include="Render\VulkanCommon.cpp" />
     <ClCompile Include="Render\VulkanFunctions.cpp" />
     <ClCompile Include="Render\VulkanManager.cpp" />

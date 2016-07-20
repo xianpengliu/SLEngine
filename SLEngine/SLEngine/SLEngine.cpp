@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "Application/Application.h"
 #include "Platform/Window.h"
-#include "Utility/Vector.h"
 #include "Render/VulkanManager.h"
 
 using namespace SL;
@@ -16,10 +15,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//Application cApp;
 	//cApp.run();
 
-	Window window;
-	VulkanManager* tutorial01 = VulkanManager::GetInstance();
-
 	// Create window
+	Window window;
 	if (!window.Create(_T("SLEngine")))
 	{
 		return -1;
@@ -36,7 +33,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	// Rendering loop
-	if (!window.RenderingLoop(*tutorial01))
+	if (!window.RenderingLoop(VulkanManager::GetInstance()->getVulkanAgent()))
 	{
 		return -1;
 	}

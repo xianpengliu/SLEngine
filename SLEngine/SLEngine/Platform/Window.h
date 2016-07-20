@@ -57,7 +57,7 @@ public:
 	~Window();
 
 	bool              Create(LPCWSTR title);
-	bool              RenderingLoop(TutorialBase &tutorial) const;
+	bool              RenderingLoop(TutorialBase *tutorial) const;
 	WindowParameters  GetParameters() const;
 
 private:

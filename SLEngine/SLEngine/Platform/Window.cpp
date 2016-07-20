@@ -80,7 +80,7 @@ bool Window::Create(LPCWSTR title) {
 	return true;
 }
 
-bool Window::RenderingLoop(TutorialBase &tutorial) const {
+bool Window::RenderingLoop(TutorialBase *ptutorial) const {
 	// Display window
 	ShowWindow(Parameters.Handle, SW_SHOWNORMAL);
 	UpdateWindow(Parameters.Handle);
@@ -111,13 +111,13 @@ bool Window::RenderingLoop(TutorialBase &tutorial) const {
 			// Draw
 			if (resize) {
 				resize = false;
-				if (!tutorial.OnWindowSizeChanged()) {
+				if (!ptutorial->OnWindowSizeChanged()) {
 					result = false;
 					break;
 				}
 			}
-			if (tutorial.ReadyToDraw()) {
-				if (!tutorial.Draw()) {
+			if (ptutorial->ReadyToDraw()) {
+				if (!ptutorial->Draw()) {
 					result = false;
 					break;
 				}

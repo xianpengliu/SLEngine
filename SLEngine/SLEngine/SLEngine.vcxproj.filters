@@ -114,6 +114,9 @@
     <ClInclude Include="Render\VulkanCommon.h">
       <Filter>Source Files\Render</Filter>
     </ClInclude>
+    <ClInclude Include="Render\VulkanAgent.h">
+      <Filter>Source Files\Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -162,6 +165,9 @@
       <Filter>Source Files\Render</Filter>
     </ClCompile>
     <ClCompile Include="Render\VulkanCommon.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\VulkanAgent.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
   </ItemGroup>
