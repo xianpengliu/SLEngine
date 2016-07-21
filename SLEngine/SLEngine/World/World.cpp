@@ -1,7 +1,6 @@
-
 #include "stdafx.h"
 #include "World.h"
-#include "Utility/Time.h"
+#include "Time.h"
 
 NS_SL_BEGIN
 
@@ -44,7 +43,7 @@ void World::onExit()
 void World::onUpdate()
 {
 	float fDelta = Time::GetInstance()->getDelta();
-	std::cout << "fDelta: " << fDelta << std::endl;
+	//std::cout << "fDelta: " << fDelta << std::endl;
 }
 
 NS_SL_END

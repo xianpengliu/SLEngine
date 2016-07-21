@@ -3,10 +3,12 @@
 
 #include "stdafx.h"
 #include "Application.h"
-#include "Common/Macros.h"
-#include "World/WorldManager.h"
-#include "World/World.h"
-#include "Utility/Time.h"
+#include "WorldManager.h"
+#include "World.h"
+#include "Time.h"
+#include "Window.h"
+#include "VulkanManager.h"
+#include "VulkanAgent.h"
 
 NS_SL_BEGIN
 
@@ -20,15 +22,54 @@ Application::~Application()
 {
 }
 
-void Application::init()
+bool Application::init()
 {
+	// Create window
+	if (!m_cWindow.Create(_T("SLEngine")))
+	{
+		return false;
+	}
+
+	// Init vulkan
+	if (VulkanManager::GetInstance()->init(m_cWindow.GetParameters()))
+	{
+		Log::log("vulkan init successfully...");
+	}
+	else
+	{
+		return false;
+	}
+
 	setAnimationInterval(1.0f / 60.0f);
 
 	World* pWorld = World::Create();
 	WorldManager::GetInstance()->replaceWorld(pWorld);
+
+	return true;
 }
 
-void Application::run()
+bool Application::run()
+{
+	// Rendering loop
+	if (!m_cWindow.RenderingLoop(this))
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool Application::OnWindowSizeChanged()
+{
+	return VulkanManager::GetInstance()->getVulkanAgent()->OnWindowSizeChanged();
+}
+
+bool Application::ReadyToDraw()
+{
+	return VulkanManager::GetInstance()->getVulkanAgent()->IsReadyToRender();
+}
+
+bool Application::Draw()
 {
 	LARGE_INTEGER nLast;
 	QueryPerformanceCounter(&nLast);
@@ -46,19 +87,19 @@ void Application::run()
 
 			Time::GetInstance()->setDelta((float)sInterval / (float)m_sFreq.QuadPart);
 
-			update();
+			// Update world
+			WorldManager::GetInstance()->getWorldCur()->onUpdate();
+
+			// Draw world
+			VulkanManager::GetInstance()->getVulkanAgent()->Draw();
 		}
 		else
 		{
 			Sleep(1);
 		}
 	}
-}
 
-void Application::update()
-{
-	World* pWorldCur = WorldManager::GetInstance()->getWorldCur();
-	pWorldCur->onUpdate();
+	return true;
 }
 
 void Application::setAnimationInterval(float interval)

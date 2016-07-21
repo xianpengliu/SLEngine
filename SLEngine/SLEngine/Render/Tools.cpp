@@ -14,7 +14,7 @@
 #include <iostream>
 #include "Tools.h"
 #define STB_IMAGE_IMPLEMENTATION
-#include "Render/stb_image.h"
+#include "stb_image.h"
 
 NS_SL_BEGIN
 

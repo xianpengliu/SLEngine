@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Window.h"
 
 NS_SL_BEGIN
 
@@ -10,17 +11,20 @@ public:
 	Application();
 	~Application();
 
-	void init();
+	bool init();
+	bool run();
 
-	void run();
-
-	void update();
+	bool OnWindowSizeChanged();
+	bool ReadyToDraw();
+	bool Draw();
 
 	void setAnimationInterval(float interval);
 
 private:
 	LARGE_INTEGER m_sFreq;
 	LARGE_INTEGER m_sInterval;
+
+	Window m_cWindow;
 };
 
 NS_SL_END

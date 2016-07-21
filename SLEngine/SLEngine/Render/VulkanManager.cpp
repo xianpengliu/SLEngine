@@ -25,7 +25,7 @@ bool VulkanManager::init(WindowParameters parameters)
 	return m_pVulkanAgent->init(parameters);
 }
 
-TutorialBase* VulkanManager::getVulkanAgent()
+VulkanAgent* VulkanManager::getVulkanAgent()
 {
 	return m_pVulkanAgent;
 }

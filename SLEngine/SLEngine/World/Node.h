@@ -1,8 +1,8 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Common/Ref.h"
-#include "Utility/Vector.h"
+#include "Ref.h"
+#include "Vector.h"
 
 NS_SL_BEGIN
 

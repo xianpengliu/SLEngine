@@ -4,31 +4,7 @@
 
 NS_SL_BEGIN
 
-class TutorialBase {
-public:
-	virtual bool OnWindowSizeChanged()
-	{
-		return true;
-	}
-	virtual bool Draw()
-	{
-		return true;
-	}
-
-	virtual bool ReadyToDraw() const final {
-		return CanRender;
-	}
-
-	TutorialBase() :
-		CanRender(false) {
-	}
-
-	virtual ~TutorialBase() {
-	}
-
-protected:
-	bool CanRender;
-};
+class Application;
 
 // ************************************************************ //
 // WindowParameters                                             //
@@ -57,7 +33,7 @@ public:
 	~Window();
 
 	bool              Create(LPCWSTR title);
-	bool              RenderingLoop(TutorialBase *tutorial) const;
+	bool              RenderingLoop(Application* pApplication) const;
 	WindowParameters  GetParameters() const;
 
 private:

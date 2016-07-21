@@ -69,6 +69,11 @@ NS_SL_BEGIN
     return false;
   }
 
+  bool VulkanCommon::IsReadyToRender()
+  {
+	  return CanRender;
+  }
+
   VkPhysicalDevice VulkanCommon::GetPhysicalDevice() const {
     return VulkanBase.PhysicalDevice;
   }

@@ -1,7 +1,7 @@
 
 #include "stdafx.h"
 #include "AutoreleasePool.h"
-#include "Common/Ref.h"
+#include "Ref.h"
 
 NS_SL_BEGIN
 

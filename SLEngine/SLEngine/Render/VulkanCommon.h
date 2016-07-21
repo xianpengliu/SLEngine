@@ -13,8 +13,8 @@
 #include "stdafx.h"
 
 #include <vector>
-#include "Render/Vulkan/vulkan.h"
-#include "Platform/Window.h"
+#include "vulkan.h"
+#include "Window.h"
 
 NS_SL_BEGIN
 
@@ -101,13 +101,16 @@ NS_SL_BEGIN
   //                                                              //
   // Base class for Vulkan more advanced tutorial classes         //
   // ************************************************************ //
-  class VulkanCommon : public TutorialBase {
+  class VulkanCommon
+  {
   public:
     VulkanCommon();
     virtual ~VulkanCommon();
 
     bool                          PrepareVulkan(WindowParameters parameters );
-    virtual bool                  OnWindowSizeChanged() final override;
+    virtual bool                  OnWindowSizeChanged();
+
+	bool IsReadyToRender();
 
   protected:
     VkPhysicalDevice              GetPhysicalDevice() const;
@@ -118,6 +121,8 @@ NS_SL_BEGIN
 
     const SwapChainParameters     GetSwapChain() const;
   protected:
+	bool CanRender;
+
 	HINSTANCE       VulkanLibrary;
     WindowParameters    Window;
     VulkanCommonParameters  VulkanBase;

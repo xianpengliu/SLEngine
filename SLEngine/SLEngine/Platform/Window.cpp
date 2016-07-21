@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Window.h"
 #include <thread>
+#include "Application.h"
 
 NS_SL_BEGIN
 
@@ -80,7 +81,7 @@ bool Window::Create(LPCWSTR title) {
 	return true;
 }
 
-bool Window::RenderingLoop(TutorialBase *ptutorial) const {
+bool Window::RenderingLoop(Application* pApplication) const {
 	// Display window
 	ShowWindow(Parameters.Handle, SW_SHOWNORMAL);
 	UpdateWindow(Parameters.Handle);
@@ -111,13 +112,13 @@ bool Window::RenderingLoop(TutorialBase *ptutorial) const {
 			// Draw
 			if (resize) {
 				resize = false;
-				if (!ptutorial->OnWindowSizeChanged()) {
+				if (!pApplication->OnWindowSizeChanged()) {
 					result = false;
 					break;
 				}
 			}
-			if (ptutorial->ReadyToDraw()) {
-				if (!ptutorial->Draw()) {
+			if (pApplication->ReadyToDraw()) {
+				if (!pApplication->Draw()) {
 					result = false;
 					break;
 				}

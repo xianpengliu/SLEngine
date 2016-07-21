@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Common/Ref.h"
+#include "Ref.h"
 #include <vector>
 #include <functional>
 #include <algorithm> // for std::find

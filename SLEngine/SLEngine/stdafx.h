@@ -18,8 +18,8 @@
 #include <vector>
 #include <list>
 #include <map>
-#include "Common/Macros.h"
-#include "Utility/Log.h"
+#include "Macros.h"
+#include "Log.h"
 
 
 // TODO: reference additional headers your program requires here

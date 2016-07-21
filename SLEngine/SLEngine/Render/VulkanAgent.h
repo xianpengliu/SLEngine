@@ -1,9 +1,9 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Render/Vulkan/vulkan.h"
-#include "Render/VulkanCommon.h"
-#include "Render/Tools.h"
+#include "vulkan.h"
+#include "VulkanCommon.h"
+#include "Tools.h"
 
 NS_SL_BEGIN
 
@@ -129,7 +129,7 @@ public:
 	bool    CreatePipeline();
 	bool    CreateVertexBuffer();
 
-	bool    Draw() override;
+	bool    Draw();
 
 private:
 	bool                                                              CreateCommandBuffers();

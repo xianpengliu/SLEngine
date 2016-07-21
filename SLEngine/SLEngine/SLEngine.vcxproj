@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)/;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)/;$(ProjectDir)/Application;$(ProjectDir)/Common;$(ProjectDir)/Platform;$(ProjectDir)/Render;$(ProjectDir)/Render/Vulkan;$(ProjectDir)/ThirdParty;$(ProjectDir)/Utility;$(ProjectDir)/World;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -53,6 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;VK_USE_PLATFORM_WIN32_KHR;USE_SWAPCHAIN_EXTENSIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)/Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
