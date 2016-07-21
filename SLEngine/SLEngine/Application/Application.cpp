@@ -71,33 +71,40 @@ bool Application::ReadyToDraw()
 
 bool Application::Draw()
 {
-	LARGE_INTEGER nLast;
-	QueryPerformanceCounter(&nLast);
+	// Update world
+	WorldManager::GetInstance()->getWorldCur()->onUpdate();
 
-	LARGE_INTEGER nNow;
+	// Draw world
+	VulkanManager::GetInstance()->getVulkanAgent()->Draw();
 
-	while (true)
-	{
-		QueryPerformanceCounter(&nNow);
+	//LARGE_INTEGER nLast;
+	//QueryPerformanceCounter(&nLast);
 
-		LONGLONG sInterval = nNow.QuadPart - nLast.QuadPart;
-		if (sInterval > m_sInterval.QuadPart)
-		{
-			nLast.QuadPart = nNow.QuadPart - (nNow.QuadPart % m_sInterval.QuadPart);
+	//LARGE_INTEGER nNow;
 
-			Time::GetInstance()->setDelta((float)sInterval / (float)m_sFreq.QuadPart);
 
-			// Update world
-			WorldManager::GetInstance()->getWorldCur()->onUpdate();
+	//while (true)
+	//{
+	//	QueryPerformanceCounter(&nNow);
 
-			// Draw world
-			VulkanManager::GetInstance()->getVulkanAgent()->Draw();
-		}
-		else
-		{
-			Sleep(1);
-		}
-	}
+	//	LONGLONG sInterval = nNow.QuadPart - nLast.QuadPart;
+	//	if (sInterval > m_sInterval.QuadPart)
+	//	{
+	//		nLast.QuadPart = nNow.QuadPart - (nNow.QuadPart % m_sInterval.QuadPart);
+
+	//		Time::GetInstance()->setDelta((float)sInterval / (float)m_sFreq.QuadPart);
+
+	//		// Update world
+	//		WorldManager::GetInstance()->getWorldCur()->onUpdate();
+
+	//		// Draw world
+	//		VulkanManager::GetInstance()->getVulkanAgent()->Draw();
+	//	}
+	//	else
+	//	{
+	//		Sleep(1);
+	//	}
+	//}
 
 	return true;
 }
@@ -105,6 +112,16 @@ bool Application::Draw()
 void Application::setAnimationInterval(float interval)
 {
 	m_sInterval.QuadPart = (LONGLONG)(interval * m_sFreq.QuadPart);
+}
+
+LARGE_INTEGER Application::getFreq()
+{
+	return m_sFreq;
+}
+
+LARGE_INTEGER Application::getInterval()
+{
+	return m_sInterval;
 }
 
 NS_SL_END

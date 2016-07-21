@@ -20,6 +20,9 @@ public:
 
 	void setAnimationInterval(float interval);
 
+	LARGE_INTEGER getFreq();
+	LARGE_INTEGER getInterval();
+
 private:
 	LARGE_INTEGER m_sFreq;
 	LARGE_INTEGER m_sInterval;

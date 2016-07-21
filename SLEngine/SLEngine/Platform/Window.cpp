@@ -92,6 +92,14 @@ bool Window::RenderingLoop(Application* pApplication) const {
 	bool resize = false;
 	bool result = true;
 
+	LARGE_INTEGER nLast;
+	QueryPerformanceCounter(&nLast);
+
+	LARGE_INTEGER nNow;
+
+
+	
+
 	while (loop) {
 		if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE)) {
 			// Process events
@@ -117,11 +125,34 @@ bool Window::RenderingLoop(Application* pApplication) const {
 					break;
 				}
 			}
-			if (pApplication->ReadyToDraw()) {
-				if (!pApplication->Draw()) {
-					result = false;
-					break;
+			if (pApplication->ReadyToDraw())
+			{
+				QueryPerformanceCounter(&nNow);
+
+				LONGLONG sInterval = nNow.QuadPart - nLast.QuadPart;
+				LARGE_INTEGER sIntervalNeed = pApplication->getInterval();
+				if (sInterval > sIntervalNeed.QuadPart)
+				{
+					nLast.QuadPart = nNow.QuadPart - (nNow.QuadPart % sIntervalNeed.QuadPart);
+
+					Time::GetInstance()->setDelta((float)sInterval / (float)pApplication->getFreq().QuadPart);
+
+					if (!pApplication->Draw()) {
+						result = false;
+						break;
+					}
+
+					//// Update world
+					//WorldManager::GetInstance()->getWorldCur()->onUpdate();
+
+					//// Draw world
+					//VulkanManager::GetInstance()->getVulkanAgent()->Draw();
 				}
+
+				//if (!pApplication->Draw()) {
+				//	result = false;
+				//	break;
+				//}
 			}
 			else {
 				std::this_thread::sleep_for(std::chrono::milliseconds(100));
